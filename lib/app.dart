@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:Shrine/colors.dart';
-import 'package:flutter/foundation.dart';
+import 'package:shrine/colors.dart';
 import 'package:flutter/material.dart';
 import 'supplemental/cut_corners_border.dart';
 import 'model/product.dart' as prod;
@@ -22,8 +21,6 @@ import 'home.dart';
 import 'login.dart';
 import 'backdrop.dart';
 import 'colors.dart';
-import 'home.dart';
-import 'login.dart';
 import 'category_menu_page.dart';
 
 class ShrineApp extends StatefulWidget {
@@ -51,7 +48,7 @@ class _ShrineAppState extends State<ShrineApp> {
           currentCategory: _currentCategory,
           onCategoryTap: _onCategoryTap,
         ),
-        frontTitle: Text('SHRINE'),
+        frontTitle: Text('JUKAY'),
         backTitle: Text('MENU'),
       ),
       initialRoute: '/login',

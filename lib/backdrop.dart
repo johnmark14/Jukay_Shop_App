@@ -1,6 +1,6 @@
+import 'package:shrine/login.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 import 'model/product.dart' as prod;
 
@@ -13,12 +13,13 @@ class _BackdropTitle extends AnimatedWidget {
 
   const _BackdropTitle({
     Key? key,
-    required Listenable listenable,
+    required Animation<double> listenable,
     required this.onPress,
     required this.frontTitle,
     required this.backTitle,
   })  : _listenable = listenable,
         super(key: key, listenable: listenable);
+
   final Animation<double> _listenable;
 
   @override
@@ -65,7 +66,12 @@ class _BackdropTitle extends AnimatedWidget {
                     begin: Offset.zero,
                     end: Offset(0.5, 0.0),
                   ).evaluate(animation),
-                  child: backTitle,
+                  child: Semantics(
+                    label: 'hide categories menu',
+                    child: ExcludeSemantics(
+                      child: backTitle,
+                    ),
+                  ),
                 ),
               ),
               Opacity(
@@ -75,9 +81,13 @@ class _BackdropTitle extends AnimatedWidget {
                 ).value,
                 child: FractionalTranslation(
                   translation: Tween<Offset>(
-                    begin: Offset.zero,
+                    begin: Offset(-0.25, 0.0),
+                    end: Offset.zero,
                   ).evaluate(animation),
-                  child: frontTitle,
+                  child: Semantics(
+                    label: 'show categories menu',
+                    child: ExcludeSemantics(child: frontTitle),
+                  ),
                 ),
               )
             ],
@@ -184,21 +194,32 @@ class _BackdropState extends State<Backdrop>
       brightness: Brightness.light,
       elevation: 0.0,
       titleSpacing: 0.0,
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: _toggleBackdropLayerVisibility,
+      title: _BackdropTitle(
+        listenable: _controller.view,
+        onPress: _toggleBackdropLayerVisibility,
+        frontTitle: widget.frontTitle,
+        backTitle: widget.backTitle,
       ),
-      title: Text('JUKAY SHOP'),
       actions: <Widget>[
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+            );
+          },
           icon: Icon(
             Icons.search,
-            semanticLabel: 'search',
+            semanticLabel: 'login',
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+            );
+          },
           icon: Icon(
             Icons.tune,
             semanticLabel: 'filter',

@@ -12,10 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:Shrine/supplemental/asymmetric_view.dart';
-import 'package:flutter/foundation.dart';
+import 'package:shrine/supplemental/asymmetric_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'model/products_repository.dart';
 import 'model/product.dart' as prod;
