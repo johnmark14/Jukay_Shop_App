@@ -1,3 +1,3 @@
-## A Learning Flutter Projects
+Markup : # Jukap App #
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://raw.githubusercontent.com/johnmark14/Jukay_Shop_App/main/assets/images/jukay_app.png)
